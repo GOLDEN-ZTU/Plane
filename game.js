@@ -34,7 +34,9 @@ class Main extends Phaser.Scene {
         this.labelScore = this.add.text(200, 20, "0", {fontSize: 24, color: "yellow"});
         this.avtor = this.add.text(20, 20, "Created by Hotsman Artem", {fontSize: 12, color: "yellow"});
         this.pipes = this.physics.add.group();
-
+        //
+        this.jumpSound = this.sound.add('jump');
+        //
         this.timedEvent = this.time.addEvent({
             delay: 1500,
             callback: this.addRowOfPipes, //Цю функцію реалізуємо на наступному кроці
@@ -66,6 +68,9 @@ class Main extends Phaser.Scene {
             duration: 100,
             repeat: 1
         });
+        //
+        this.jumpSound.play();
+        //
         this.plane.body.velocity.y = -350;
     }
         //Функція для створення блоку труби
